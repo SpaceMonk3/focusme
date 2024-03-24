@@ -64,7 +64,7 @@ export default function Home() {
           Upload Task
         </button>
         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">
-          <Link href="/calendar.js">Calendar</Link>
+          <Link href="/calendar">Calendar</Link>
         </button>
         {showPopup && (
           <div className="fixed inset-0 flex items-center justify-center">
