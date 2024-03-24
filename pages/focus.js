@@ -1,20 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+//import React from 'react';
 
 const Focus = () => {
+    useEffect(() => {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        window.onYouTubeIframeAPIReady = () => {
+            new window.YT.Player('youtube-player', {
+                width: 400,
+                height: 300,
+                videoId: 'jfKfPfyJRdk',
+                playerVars: {
+                    autoplay: 1,
+                    controls: 1,
+                    modestbranding: 1,
+                    showinfo: 0,
+                    rel: 0,
+                    fs: 0,
+                },
+            });
+        };
+    }, []);
+
     return (
         <div>
             <div style={{ position: 'absolute', bottom: '10%', left: '3%' }}>
                 {/* YouTube video embed */}
-                <iframe
-                    width="400"
-                    height="300"
-                    src="https://www.youtube.com/live/jfKfPfyJRdk?si=H5fdMUtJsqZZ4_Pv"
-                    title="YouTube Video"
-                    frameborder="1"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
+                <div id="youtube-player"></div>
             </div>
+            <div>
             <div style={{ position: 'absolute', bottom: '0', right: '0' }}>
                 {/* Stopwatch timer */}
                 <h2>Stopwatch Timer</h2>
@@ -35,6 +52,8 @@ const Focus = () => {
                     style={{ color: "black" }}
               ></textarea>
             </div>
+        </div>
+
         </div>
     );
 };
