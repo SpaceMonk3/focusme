@@ -10,7 +10,7 @@ from langchain.chains import LLMChain
 
 app = Flask(__name__)
 load_dotenv()
-os.environ['PREDICTIONGUARD_TOKEN'] = "q1VuOjnffJ3NO2oFN8Q9m8vghYc84ld13jaqdF7E"
+pg_apikey = os.environ['PREDICTIONGUARD_TOKEN']
 @app.route("/generate_subtasks", methods=['GET'])
 def generate_subtasks(description="I have a programming assignment due in 1 month. How do I start it generically?"):
     template = """Respond to the following query based on the context.
