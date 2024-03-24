@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 //import React from 'react';
+import PomodoroTimer from './/Components/PomodoroTimer';
 
 const Focus = () => {
     useEffect(() => {
@@ -32,7 +33,7 @@ const Focus = () => {
                 <div id="youtube-player"></div>
             </div>
             <div>
-            <div style={{ position: 'absolute', bottom: '0', right: '0' }}>
+            <div style={{ position: 'absolute', bottom: '35%', right: '43%' }}>
                 {/* Stopwatch timer */}
                 <h2>Stopwatch Timer</h2>
                 {/*stopwatch timer component*/}
@@ -41,12 +42,11 @@ const Focus = () => {
                 {/* Spotify embed */}
                 <iframe src="https://open.spotify.com/embed/playlist/6dAET38ipmNB3dIecfVfNj?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
-            <div style={{ position: 'absolute', top: '0', left: '0' }}>
-                {/* Pomodoro timer */}
-                <h2>Mini Pomodoro Timer</h2>
+            <div style={{ position: 'absolute', top: '20%', left: '14%', transform: 'translate(-50%, -50%)' }}>
+                    <PomodoroTimer />
                 {/* Pomodoro timer component */}
             </div>
-            <div style={{position: 'absolute', top: '20%', left: '30%', transform: 'translate(-50%, -50%)' }}>
+            <div style={{position: 'absolute', top: '20%', left: '40%', transform: 'translate(-50%, -50%)' }}>
                 <textarea
                     className="w-full h-40 p-2 border border-gray-300 rounded"
                     style={{ color: "black" }}
