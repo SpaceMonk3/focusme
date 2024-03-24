@@ -22,14 +22,7 @@ const Focus = () => {
             </div>
             <div style={{ position: 'absolute', bottom: '10%', right: '3%' }}>
                 {/* Spotify embed */}
-                <iframe
-                    src="https://open.spotify.com/playlist/6dAET38ipmNB3dIecfVfNj?si=2e4a3caf5e7e491d"
-                    width="250"
-                    height="300"
-                    frameborder="1"
-                    allowtransparency="true"
-                    allow="encrypted-media"
-                ></iframe>
+                <iframe src="https://open.spotify.com/embed/playlist/6dAET38ipmNB3dIecfVfNj?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
             <div style={{ position: 'absolute', top: '0', left: '0' }}>
                 {/* Pomodoro timer */}
