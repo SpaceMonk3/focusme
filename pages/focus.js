@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PomodoroTimer from './Components/PomodoroTimer';
 import Link from "next/link"; // Import the Link component from Next.js
+import Timer from './Components/Timer'; 
 
 const Focus = () => {
     useEffect(() => {
@@ -38,7 +39,7 @@ const Focus = () => {
             </div>
             <div style={{ position: 'absolute', bottom: '35%', right: '43%' }}>
                 {/* Stopwatch timer */}
-                <h2>Stopwatch Timer</h2>
+                
                 {/* Stopwatch timer component */}
             </div>
             <div style={{ position: 'absolute', bottom: '10%', right: '3%' }}>
@@ -72,6 +73,9 @@ const Focus = () => {
                 <div style={{ backgroundColor: 'gray', padding: '10px', borderRadius: '5px' }}>
                     <p style={{ color: 'white', margin: '0' }}>Task Description: Complete connecting the backend to the frontend</p>
                 </div>
+            </div>
+            <div style={{ position: 'absolute', bottom: '10%', right: '37%' }}>
+                <Timer />
             </div>
         </div>
     );
