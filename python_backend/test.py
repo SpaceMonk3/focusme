@@ -1,5 +1,3 @@
-from flask import Flask, redirect, url_for, render_template, request, jsonify
-from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 import predictionguard as pg
@@ -7,13 +5,10 @@ import os
 from langchain_community.llms import PredictionGuard
 from langchain_core.prompts import PromptTemplate
 from langchain.chains import LLMChain
-
-app = Flask(__name__)
 load_dotenv()
-pg_apikey = os.environ['PREDICTIONGUARD_TOKEN']
-@app.route("/generate_subtasks", methods=['GET'])
-def generate_subtasks(description="I have a programming assignment due in 1 month. How do I start it generically?"):
-    template = """Respond to the following query based on the context.
+os.environ['PREDICTIONGUARD_TOKEN'] = "q1VuOjnffJ3NO2oFN8Q9m8vghYc84ld13jaqdF7E"
+description="I have a programming assignment due in 1 month. How do I start it generically?"
+template = """Respond to the following query based on the context.
     
     Context: You will receive input frmm the user that contains the description of an assignment or project. 
     The user may input a due date in the form of plain text or may give a date, or no date at all. Based on what the user has given you and the 
@@ -23,12 +18,11 @@ def generate_subtasks(description="I have a programming assignment due in 1 mont
     
     Query: {query}
     Result: """
-    prompt = PromptTemplate(template=template, input_variables=["query"])
-    result = pg.Completion.create(
+prompt = PromptTemplate(template=template, input_variables=["query"],
+                        )
+result = pg.Completion.create(
     model="Nous-Hermes-Llama2-13B",
     prompt=prompt.format(query=description)
 )
-    return result['choices'][0]['text']
+print(result['choices'][0]['text'])
 
-if __name__ == '__main__':
-    app.run(debug=True)
