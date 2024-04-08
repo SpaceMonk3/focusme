@@ -1,12 +1,63 @@
+import React, { useEffect } from 'react';
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useState } from "react";
 import Link from "next/link"; // Import the Link component from Next.js
 import Spline from '@splinetool/react-spline';
+import Anime from 'animejs';
 
-//const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
+  useEffect(() => {
+    var numberOfEls = 1000;
+    var duration = 3000; // Adjusted for a longer animation
+    var midScreenX = window.innerWidth / 2;
+    var midScreenY = window.innerHeight / 2;
+    var radius = Math.sqrt(midScreenX**2 + midScreenY**2);
+    var fragment = document.createDocumentFragment();
+
+    for (var i = 0; i < numberOfEls; i++) {
+      var hue = Math.round(360 / numberOfEls * i);
+      var angle = Math.random() * Math.PI * 2;
+      var el = document.createElement('div');
+      el.classList.add('particule');
+      el.style.backgroundColor = `hsl(${hue}, 40%, 60%)`;
+      el.style.position = 'absolute';
+      el.style.width = '1px';
+      el.style.height = '1px';
+      Anime({
+        targets: el,
+        width: ['1px', '10px'],
+        height: ['1px', '10px'],
+        left: [midScreenX + 'px', Math.cos(angle) * radius + midScreenX + 'px'],
+        top: [midScreenY + 'px', Math.sin(angle) * radius + midScreenY + 'px'],
+        delay: (duration / numberOfEls) * i,
+        duration: duration,
+        easing: 'easeInExpo',
+        loop: true
+      });
+      fragment.appendChild(el);
+    }
+
+    document.body.appendChild(fragment);
+  }, []);
+
+  return (
+    <div className="flex flex-col justify-start items-center fixed inset-0 p-0 overflow-hidden">
+      <Spline scene="https://prod.spline.design/koq1AD6uviQDBnO7/scene.splinecode" />
+
+      <div className="flex justify-end items-end fixed top-5 right-4 p-4">
+        <button
+            className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+        >
+            Log in
+        </button>
+      </div>
+    </div>
+  );
+
+  
   /*const [showPopup, setShowPopup] = useState(false);
   const [taskDescription, setTaskDescription] = useState("");
   const [uploadedTasks, setUploadedTasks] = useState([]);
@@ -90,9 +141,9 @@ export default function Home() {
   );*/
 
 
-  return (
+  /*return (
     <Spline scene="https://prod.spline.design/koq1AD6uviQDBnO7/scene.splinecode" />
-  );
+  );*/
   
 
 }
