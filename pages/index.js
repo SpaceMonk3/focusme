@@ -2,11 +2,12 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState } from "react";
 import Link from "next/link"; // Import the Link component from Next.js
+import Spline from '@splinetool/react-spline';
 
-const inter = Inter({ subsets: ["latin"] });
+//const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [showPopup, setShowPopup] = useState(false);
+  /*const [showPopup, setShowPopup] = useState(false);
   const [taskDescription, setTaskDescription] = useState("");
   const [uploadedTasks, setUploadedTasks] = useState([]);
 
@@ -38,7 +39,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-start items-center fixed inset-0 p-4">
-      <h1 className="text-4xl font-bold mb-8">FocusMe</h1> {/* Add title text */}
+      <h1 className="text-4xl font-bold mb-8">FocusMe</h1> {}
       <div className="flex flex-col items-center">
         {uploadedTasks.map((task, index) => (
           <div
@@ -86,5 +87,12 @@ export default function Home() {
         )}
       </div>
     </div>
+  );*/
+
+
+  return (
+    <Spline scene="https://prod.spline.design/koq1AD6uviQDBnO7/scene.splinecode" />
   );
+  
+
 }
