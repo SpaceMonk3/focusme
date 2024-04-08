@@ -11,9 +11,11 @@ export default function Home() {
 
   useEffect(() => {
     var numberOfEls = 100;
-    var duration = 3000; // Adjusted for a longer animation
+    var duration = 5000; // Adjusted for a longer animation
     var midScreenX = window.innerWidth / 2;
+    //var midScreenX = Math.random() * window.innerWidth;
     var midScreenY = window.innerHeight / 2;
+    //var midScreenY = Math.random() * window.innerHeight;
     var radius = Math.sqrt(midScreenX**2 + midScreenY**2);
     var fragment = document.createDocumentFragment();
 
@@ -53,6 +55,10 @@ export default function Home() {
         >
             Log in
         </button>
+      </div>
+
+      <div className="flex justify-end items-end fixed bottom-1 left-1 p-4 text-black text-sm">
+        HooHacks 2024
       </div>
     </div>
   );
