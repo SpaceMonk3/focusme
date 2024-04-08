@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
 
   useEffect(() => {
-    var numberOfEls = 1000;
+    var numberOfEls = 100;
     var duration = 3000; // Adjusted for a longer animation
     var midScreenX = window.innerWidth / 2;
     var midScreenY = window.innerHeight / 2;
@@ -57,7 +57,7 @@ export default function Home() {
     </div>
   );
 
-  
+
   /*const [showPopup, setShowPopup] = useState(false);
   const [taskDescription, setTaskDescription] = useState("");
   const [uploadedTasks, setUploadedTasks] = useState([]);
