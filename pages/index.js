@@ -53,12 +53,24 @@ export default function Home() {
         <button
             className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
         >
-            Log in
+          Log in
+        </button>
+      </div>
+
+      <div className="flex justify-end items-end fixed top-5 left-4 p-4">
+        <button
+            className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => window.location.href = "https://github.com/SpaceMonk3/focusme"}
+        >
+            Github Repo
         </button>
       </div>
 
       <div className="flex justify-end items-end fixed bottom-1 left-1 p-4 text-black text-sm">
         HooHacks 2024
+      </div>
+      <div className="flex justify-end items-end fixed bottom-1 right-1 p-4 text-black text-sm">
+        Made by&nbsp;<a href="https://www.linkedin.com/in/dheer-tammina/"><u>Dheer</u></a>,&nbsp;<a href="https://www.linkedin.com/in/aadyakamath"><u>Aadya</u></a>,&nbsp;<a href="https://www.linkedin.com/in/michael-vinh-nguyen/"><u>Michael</u></a>, and&nbsp;<a href="https://www.linkedin.com/in/samueloessandoh/"><u>Samuel</u></a>
       </div>
     </div>
   );
