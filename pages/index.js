@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link"; // Import the Link component from Next.js
 import Spline from '@splinetool/react-spline';
 import Anime from 'animejs';
+import { useSession, signIn, signOut } from "next-auth/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,8 +51,9 @@ export default function Home() {
       <Spline scene="https://prod.spline.design/koq1AD6uviQDBnO7/scene.splinecode" />
 
       <div className="flex justify-end items-end fixed top-5 right-4 p-4">
-        <button
-            className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+        <button 
+          onClick={() => signIn('google')} 
+          className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
         >
           Log in
         </button>
