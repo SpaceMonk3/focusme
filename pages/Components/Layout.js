@@ -11,11 +11,11 @@ import React, { useEffect, useRef } from 'react';
 //const inter = Inter({ subsets: ['latin'] })
 
 export default function Layout({children}) {
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const particleContainerRef = useRef(null);
 
     useEffect(() => {
-        if(!session && status !== 'loading'){
+        if(!session && status !== 'loading' && particleContainerRef.current !== null){
             var numberOfEls = 100;
             var duration = 5000; // Adjusted for a longer animation
             var midScreenX = window.innerWidth / 2;
@@ -98,7 +98,7 @@ export default function Layout({children}) {
     }
     return (
         <div className="bg-blue-900 min-h-screen flex">
-            <div className="bg-white flex-grow mt-2 mr-2 mb-2 rounded-lg p-4"> 
+            <div className="bg-white flex-grow mt-2 mr-2 mb-2 ml-2 rounded-lg p-4"> 
             {children}
             </div>
         </div>
