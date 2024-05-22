@@ -50,7 +50,7 @@ const MyCalendar = () => {
     //     ]}
     //   />
     // </div>
-    <div className="text-blue-900 flex justify-between">
+    <div className="text-black flex justify-between">
       <h2>
         Hello, <b>{session?.user?.name}</b>
       </h2>
@@ -66,12 +66,12 @@ const MyCalendar = () => {
             {uploadedTasks.map((task, index) => (
               <div
                 key={index}
-                className="bg-green-400 p-4 rounded shadow mb-4 task-box"
+                className="bg-green p-4 rounded shadow mb-4 task-box"
                 style={{ color: "black", width: "300px", display: "flex", justifyContent: "space-between" }}
               >
                 <div>{task}</div>
                 <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-4"
+                  className="bg-red hover:bg-red text-white font-bold py-2 px-4 rounded ml-4"
                   onClick={() => handleDelete(index)}
                 >
                   Done
@@ -82,32 +82,32 @@ const MyCalendar = () => {
           <div className="flex justify-end items-end fixed top-10 right-2 p-4">
             <button 
                 onClick={() => signOut('google')} 
-                className="bg-gray-900 rounded-md hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-black rounded-md hover:bg-gray text-white font-bold py-2 px-4 rounded"
             >
                 Sign Out
             </button> 
           </div>
           <div className="flex justify-end items-end fixed bottom-0 right-0 p-4">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue hover:bg-blue text-white font-bold py-2 px-4 rounded"
               onClick={openPopup}
             >
               Upload Task
             </button>
-            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">
+            <button className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded ml-4">
               Calendar
             </button>
             {showPopup && (
               <div className="fixed inset-0 flex items-center justify-center">
-                <div className="bg-green-400 p-4 rounded-md shadow">
+                <div className="bg-green p-4 rounded-md shadow">
                   <textarea
-                    className="w-full h-40 p-2 border border-gray-300 rounded-md"
+                    className="w-full h-40 p-2 border border-gray rounded-md"
                     value={taskDescription}
                     onChange={handleTaskDescriptionChange}
                     style={{ color: "black" }}
                   ></textarea>
                   <button
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
+                    className="bg-red hover:bg-red text-white font-bold py-2 px-4 rounded-md"
                     onClick={handleUpload}
                   >
                     Upload
