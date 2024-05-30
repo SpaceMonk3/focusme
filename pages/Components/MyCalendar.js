@@ -52,49 +52,67 @@ const MyCalendar = () => {
     // </div>
     <div className="text-black flex justify-between">
       <h2>
-        Hello, <b>{session?.user?.name}</b>
+        <b>FocusMe</b> Hello, <b>{session?.user?.name}</b>
       </h2>
       <div className="flex bg-gray-300 gap-1 text-black rounded-md overflow-hidden">
-        <img src={session?.user?.image} alt="profile pic" className="w-6 h-6"/>  
-        <span className="px-2">
+        <img src={session?.user?.image} alt="profile pic" className="w-8 h-8"/>  
+        <span className="px-2" style={{ fontSize: "19px" }}>
           {session?.user?.name}
         </span>
 
-        <div className="flex flex-col justify-start items-center fixed inset-0 p-4">
-          <h1 className="text-4xl font-bold mb-8">FocusMe</h1> {}
-          <div className="flex flex-col items-center">
+
+
+        <div className="flex flex-col justify-start fixed inset-0 p-4">
+          <h1 className="text-4xl font-bold mb-8 text-center">FocusMe</h1> {}
+
+
+          <div className="bg-green p-4 rounded-xl shadow flex flex-col items-end fixed top-20 left-10"
+               style={{ width: "40vw", height: "70vh", position: "fixed"}}>
+            <textarea
+              className="w-full h-full p-2 border border-gray rounded-md"
+              value={taskDescription}
+              onChange={handleTaskDescriptionChange}
+              style={{ color: "black" }}
+            ></textarea>
+            
+            <button
+              className="bg-red hover:bg-red text-white font-bold py-2 px-4 mt-3 rounded-full"
+              onClick={handleUpload}
+            >
+              Upload
+            </button>
+
+          </div>
+
+
+
+          <div className="flex flex-col items-end fixed top-20 right-20 overflow-auto" style={{ maxHeight: "calc(100vh - 160px)" }}>
             {uploadedTasks.map((task, index) => (
               <div
                 key={index}
-                className="bg-green p-4 rounded shadow mb-4 task-box"
+                className="bg-green p-4 rounded-xl shadow mb-4"
                 style={{ color: "black", width: "300px", display: "flex", justifyContent: "space-between" }}
               >
                 <div>{task}</div>
                 <button
-                  className="bg-red hover:bg-red text-white font-bold py-2 px-4 rounded ml-4"
+                  className="bg-red hover:bg-red text-white font-bold py-2 px-4 rounded-full ml-4"
                   onClick={() => handleDelete(index)}
                 >
-                  Done
+                  Start
                 </button>
               </div>
             ))}
           </div>
-          <div className="flex justify-end items-end fixed top-10 right-2 p-4">
-            <button 
-                onClick={() => signOut('google')} 
-                className="bg-black rounded-md hover:bg-gray text-white font-bold py-2 px-4 rounded"
-            >
-                Sign Out
-            </button> 
-          </div>
+
+          
           <div className="flex justify-end items-end fixed bottom-0 right-0 p-4">
             <button
-              className="bg-blue hover:bg-blue text-white font-bold py-2 px-4 rounded"
+              className="bg-blue hover:bg-blue text-white font-bold py-2 px-4 rounded-full"
               onClick={openPopup}
             >
               Upload Task
             </button>
-            <button className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded ml-4">
+            <button className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded-full ml-4">
               Calendar
             </button>
             {showPopup && (
@@ -107,7 +125,7 @@ const MyCalendar = () => {
                     style={{ color: "black" }}
                   ></textarea>
                   <button
-                    className="bg-red hover:bg-red text-white font-bold py-2 px-4 rounded-md"
+                    className="bg-red hover:bg-red text-white font-bold py-2 px-4 rounded-full"
                     onClick={handleUpload}
                   >
                     Upload
@@ -115,6 +133,13 @@ const MyCalendar = () => {
                 </div>
               </div>
             )}
+            <button 
+                onClick={() => signOut('google')} 
+                className="bg-black rounded-md hover:bg-gray text-white font-bold py-2 px-4 rounded-full ml-4"
+            >
+                Sign Out
+            </button> 
+            
           </div>
         </div>
 

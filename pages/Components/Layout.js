@@ -72,7 +72,7 @@ export default function Layout({children}) {
                 <div className="flex justify-end items-end fixed top-5 right-4 p-4">
                 <button 
                     onClick={() => signIn('google')} 
-                    className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-black hover:bg-gray text-white font-bold py-2 px-4 rounded-full"
                 >
                     Log in
                 </button>
@@ -80,7 +80,7 @@ export default function Layout({children}) {
 
                 <div className="flex justify-end items-end fixed top-5 left-4 p-4">
                 <button
-                    className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-black hover:bg-gray text-white font-bold py-2 px-4 rounded-full"
                     onClick={() => window.location.href = "https://github.com/SpaceMonk3/focusme"}
                 >
                     Github Repo
@@ -98,7 +98,7 @@ export default function Layout({children}) {
     }
     return (
         <div className="bg-green min-h-screen flex">
-            <div className="bg-white flex-grow mt-2 mr-2 mb-2 ml-2 rounded-lg p-4"> 
+            <div className="bg-white flex-grow mt-2 mr-2 mb-2 ml-2 rounded-xl p-4"> 
             {children}
             </div>
         </div>
