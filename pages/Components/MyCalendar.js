@@ -22,11 +22,29 @@ const MyCalendar = () => {
     setTaskDescription(event.target.value);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     console.log("Uploading task description:", taskDescription);
     const shortenedTaskDescription = taskDescription.substring(0, 25); // Get the first 25 characters
+  
+    // Send the task description to the backend
+    const response = await fetch('/generate_subtasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ text: taskDescription })
+    });
+  
+    if (!response.ok) {
+      console.error('Failed to upload task');
+      return;
+    }
+  
+    const data = await response.json();
+    console.log(data);
+  
     setUploadedTasks([...uploadedTasks, shortenedTaskDescription]);
-    setTaskDescription("");
+    setTaskDescription(data);
     closePopup();
   };
 
@@ -66,17 +84,17 @@ const MyCalendar = () => {
           <h1 className="text-4xl font-bold mb-8 text-center">FocusMe</h1> {}
 
 
-          <div className="bg-green p-4 rounded-xl shadow flex flex-col items-end fixed top-20 left-10"
+          <div className="bg-green p-4 hover:bg-gray rounded-xl shadow flex flex-col items-end fixed top-20 left-10"
                style={{ width: "40vw", height: "70vh", position: "fixed"}}>
             <textarea
-              className="w-full h-full p-2 border border-gray rounded-md"
+              className="w-full h-full p-2 border border-gray rounded-md resize-none"
               value={taskDescription}
               onChange={handleTaskDescriptionChange}
               style={{ color: "black" }}
             ></textarea>
             
             <button
-              className="bg-red hover:bg-red text-white font-bold py-2 px-4 mt-3 rounded-full"
+              className="bg-red hover:bg-purple text-white font-bold py-2 px-4 mt-3 rounded-full"
               onClick={handleUpload}
             >
               Upload
@@ -95,7 +113,7 @@ const MyCalendar = () => {
               >
                 <div>{task}</div>
                 <button
-                  className="bg-red hover:bg-red text-white font-bold py-2 px-4 rounded-full ml-4"
+                  className="bg-red hover:bg-purple text-white font-bold py-2 px-4 rounded-full ml-4"
                   onClick={() => handleDelete(index)}
                 >
                   Start
