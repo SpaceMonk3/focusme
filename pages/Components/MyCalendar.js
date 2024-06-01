@@ -26,8 +26,8 @@ const MyCalendar = () => {
     console.log("Uploading task description:", taskDescription);
     const shortenedTaskDescription = taskDescription.substring(0, 25); // Get the first 25 characters
   
-    // Send the task description to the backend
-    const response = await fetch('/generate_subtasks', {
+    // Send the task description to the backend --- GOTTA CHANGE PORT LATER
+    const response = await fetch('http://localhost:5000/api/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -42,9 +42,15 @@ const MyCalendar = () => {
   
     const data = await response.json();
     console.log(data);
-  
-    setUploadedTasks([...uploadedTasks, shortenedTaskDescription]);
-    setTaskDescription(data);
+    
+    // Remove the Markdown code block syntax and parse the inner JSON string
+    const jsonString = data.content.replace(/```json\n|\n```|\*\*/g, '');
+    const innerData = JSON.parse(jsonString);
+    const firstKey = Object.keys(innerData)[0];
+    const firstValue = innerData[firstKey];
+
+    setUploadedTasks([...uploadedTasks, firstValue]);
+    setTaskDescription("");
     closePopup();
   };
 
@@ -87,7 +93,7 @@ const MyCalendar = () => {
           <div className="bg-green p-4 hover:bg-gray rounded-xl shadow flex flex-col items-end fixed top-20 left-10"
                style={{ width: "40vw", height: "70vh", position: "fixed"}}>
             <textarea
-              className="w-full h-full p-2 border border-gray rounded-md resize-none"
+              className="w-full h-full p-2 border border-gray rounded-md resize-none scrollbar-thin scrollbar-webkit"
               value={taskDescription}
               onChange={handleTaskDescriptionChange}
               style={{ color: "black" }}
@@ -104,7 +110,7 @@ const MyCalendar = () => {
 
 
 
-          <div className="flex flex-col items-end fixed top-20 right-20 overflow-auto" style={{ maxHeight: "calc(100vh - 160px)" }}>
+          <div className="flex flex-col items-end fixed top-20 right-20 overflow-auto scrollbar-thin scrollbar-webkit" style={{ maxHeight: "calc(100vh - 160px)" }}>
             {uploadedTasks.map((task, index) => (
               <div
                 key={index}
