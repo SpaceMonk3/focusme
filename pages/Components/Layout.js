@@ -72,7 +72,7 @@ export default function Layout({children}) {
                 <div className="flex justify-end items-end fixed top-5 right-4 p-4">
                 <button 
                     onClick={() => signIn('google')} 
-                    className="bg-black hover:bg-gray text-white font-bold py-2 px-4 rounded-full"
+                    className="bg-black shadow hover:bg-gray text-white font-bold py-2 px-4 rounded-full"
                 >
                     Log in
                 </button>
@@ -80,7 +80,7 @@ export default function Layout({children}) {
 
                 <div className="flex justify-end items-end fixed top-5 left-4 p-4">
                 <button
-                    className="bg-black hover:bg-gray text-white font-bold py-2 px-4 rounded-full"
+                    className="bg-black shadow hover:bg-gray text-white font-bold py-2 px-4 rounded-full"
                     onClick={() => window.location.href = "https://github.com/SpaceMonk3/focusme"}
                 >
                     Github Repo

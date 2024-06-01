@@ -3,7 +3,6 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 import predictionguard as pg
-import os
 from langchain_community.llms import PredictionGuard
 from langchain_core.prompts import PromptTemplate
 from langchain.chains import LLMChain
