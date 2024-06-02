@@ -52,6 +52,29 @@ const MyCalendar = () => {
     setUploadedTasks([...uploadedTasks, firstValue]);
     setTaskDescription("");
     closePopup();
+
+    // Add event to Google Calendar
+    var event = {
+      'summary': firstValue,
+      'description': taskDescription,
+      'start': {
+        'dateTime': '2022-01-01T09:00:00-07:00', // Replace with the actual start date and time
+        'timeZone': 'America/Los_Angeles' // Replace with the actual time zone
+      },
+      'end': {
+        'dateTime': '2022-01-01T17:00:00-07:00', // Replace with the actual end date and time
+        'timeZone': 'America/Los_Angeles' // Replace with the actual time zone
+      },
+    };
+
+    var request = gapi.client.calendar.events.insert({
+      'calendarId': 'primary',
+      'resource': event
+    });
+
+    request.execute(function(event) {
+      console.log('Event created: ' + event.htmlLink);
+    });
   };
 
   const handleDelete = (index) => {
