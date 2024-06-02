@@ -3,6 +3,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 import google.generativeai as genai
+from calendar_api import create_event  # Import the create_event function
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS
@@ -30,6 +31,12 @@ def generate_subtasks():
     Query: {query}
     Result: """
     response = model.generate_content(template + " The input from the user is: " + description)
+
+    # Parse the response and send it to the frontend
+    content = response.text
+
+    # Create a Google Calendar event with the generated subtask
+    calendar_event_id = create_event(content)
 
     # Parse the response and send it to the frontend
     return jsonify({ 'content': response.text })
